@@ -1,0 +1,10 @@
+
+
+
+/backend/node_modules/
+/frontend/notes-app/node_modules/
+
+
+# Ignore environment variables
+/backend/.env
+/frontend/notes-app/.env
