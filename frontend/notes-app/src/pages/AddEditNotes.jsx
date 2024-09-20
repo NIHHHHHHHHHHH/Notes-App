@@ -4,14 +4,16 @@ import TagInput from "../components/TagInput"
 import axios from "axios"
 import { toast } from "react-toastify"
 
-//     // fetch(`${apiUrl}/api/videos`)
+
 
 const AddEditNotes = ({ onClose, noteData, type, getAllNotes }) => {
   const [title, setTitle] = useState(noteData?.title || "")
   const [content, setContent] = useState(noteData?.content || "")
   const [tags, setTags] = useState(noteData?.tags || [])
   const [error, setError] = useState(null)
-  const apiUrl = process.env.REACT_APP_API_URL
+ 
+  const apiUrl = import.meta.env.VITE_API_URL;
+  
   //   Edit Note
   const editNote = async () => {
     const noteId = noteData._id

@@ -7,4 +7,4 @@
 
 # Ignore environment variables
 /backend/.env
-/frontend/notes-app/.env
+/frontend/.env

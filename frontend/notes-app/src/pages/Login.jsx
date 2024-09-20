@@ -16,8 +16,8 @@ const Login = () => {
   const [password, setPassword] = useState("")
   const [error, setError] = useState("")
 
-  const apiUrl = process.env.REACT_APP_API_URL
-  
+  const apiUrl = import.meta.env.VITE_API_URL;
+
   const dispatch = useDispatch()
   const navigate = useNavigate()
 

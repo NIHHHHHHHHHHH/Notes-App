@@ -19,7 +19,9 @@ const Home = () => {
   const [allNotes, setAllNotes] = useState([])
 
   const [isSearch, setIsSearch] = useState(false)
-  const apiUrl = process.env.REACT_APP_API_URL
+ 
+  const apiUrl = import.meta.env.VITE_API_URL;
+
   // console.log(allNotes)
 
   const navigate = useNavigate()
@@ -87,7 +89,7 @@ const Home = () => {
 
   const onSearchNote = async (query) => {
     try {
-      const res = await axios.get("http://localhost:3000/api/note/search", {
+      const res = await axios.get(`${apiUrl}/api/note/serach`, {
         params: { query },
         withCredentials: true,
       })
@@ -166,11 +168,6 @@ const Home = () => {
           </div>
         ) : (
           <EmptyCard
-            imgSrc={
-              isSearch
-                ? "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQtakcQoMFXwFwnlochk9fQSBkNYkO5rSyY9A&s"
-                : "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQDCtZLuixBFGTqGKdWGLaSKiO3qyhW782aZA&s"
-            }
             message={
               isSearch
                 ? "Oops! No Notes found matching your search"
