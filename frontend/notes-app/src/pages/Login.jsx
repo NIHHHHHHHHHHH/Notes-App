@@ -16,6 +16,8 @@ const Login = () => {
   const [password, setPassword] = useState("")
   const [error, setError] = useState("")
 
+  const apiUrl = process.env.REACT_APP_API_URL
+  
   const dispatch = useDispatch()
   const navigate = useNavigate()
 
@@ -40,7 +42,7 @@ const Login = () => {
       dispatch(signInStart())
 
       const res = await axios.post(
-        "http://localhost:3000/api/auth/signin",
+        `${apiUrl}/api/auth/signin`,
         { email, password },
         { withCredentials: true }
       )

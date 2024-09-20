@@ -4,12 +4,14 @@ import TagInput from "../components/TagInput"
 import axios from "axios"
 import { toast } from "react-toastify"
 
+//     // fetch(`${apiUrl}/api/videos`)
+
 const AddEditNotes = ({ onClose, noteData, type, getAllNotes }) => {
   const [title, setTitle] = useState(noteData?.title || "")
   const [content, setContent] = useState(noteData?.content || "")
   const [tags, setTags] = useState(noteData?.tags || [])
   const [error, setError] = useState(null)
-
+  const apiUrl = process.env.REACT_APP_API_URL
   //   Edit Note
   const editNote = async () => {
     const noteId = noteData._id
@@ -17,7 +19,7 @@ const AddEditNotes = ({ onClose, noteData, type, getAllNotes }) => {
 
     try {
       const res = await axios.post(
-        "http://localhost:3000/api/note/edit/" + noteId,
+        `${apiUrl}/api/note/edit/`+ noteId,
         { title, content, tags },
         { withCredentials: true }
       )
@@ -45,7 +47,7 @@ const AddEditNotes = ({ onClose, noteData, type, getAllNotes }) => {
   const addNewNote = async () => {
     try {
       const res = await axios.post(
-        "http://localhost:3000/api/note/add",
+        `${apiUrl}/api/note/add`,
         { title, content, tags },
         { withCredentials: true }
       )

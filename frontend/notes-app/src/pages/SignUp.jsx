@@ -11,6 +11,8 @@ const Signup = () => {
   const [password, setPassword] = useState("")
   const [error, setError] = useState("")
 
+  const apiUrl = process.env.REACT_APP_API_URL
+
   const navigate = useNavigate()
 
   const handleSignUp = async (e) => {
@@ -36,7 +38,7 @@ const Signup = () => {
     // sign up api
     try {
       const res = await axios.post(
-        "http://localhost:3000/api/auth/signup",
+        `${apiUrl}/api/auth/signup`,
         { username: name, email, password },
         { withCredentials: true }
       )
